@@ -17,6 +17,11 @@ else
 endif
 ccflags-y += -I$(NVIDIA_SRC_DIR)
 
+# don't warn about missing NVIDIA symbols; they'll be available
+# TODO: create our own Module.symvers,
+#       https://github.com/NVIDIA/gds-nvidia-fs/blob/af3f7de96b4e500abf30e3034e5827749953bd68/src/Makefile#L108-L112
+KBUILD_MODPOST_WARN=1
+
 all: litepcie.ko
 
 litepcie.ko: main.c
